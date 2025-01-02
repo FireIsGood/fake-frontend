@@ -79,6 +79,17 @@ $theme: mat.define-theme(
   }
 }
 
+#noscript {
+  position: absolute;
+  inset: 0;
+  background-color: var(--mat-sys-background);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  font-size: 4rem;
+}
+
 // General styles
 .account-card {
   display: grid;
