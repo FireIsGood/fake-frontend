@@ -1,0 +1,18 @@
+<header class="topbar">
+  <div class="topbar-text">
+    <fa-icon [icon]="postIcon" size="sm" />
+    Post
+  </div>
+</header>
+<article>
+  <section class="page-content">
+    <button mat-button (click)="handleBack()" class="post-back">&larr; Back</button>
+    @if (post) {
+      <app-post [post]="post" />
+    } @else if (loading) {
+      <app-loader> post</app-loader>
+    } @else {
+      <p>No post found</p>
+    }
+  </section>
+</article>

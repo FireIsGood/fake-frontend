@@ -1,0 +1,11 @@
+<article class="post-card">
+  <header class="post-title">
+    <div>{{ post().title }}</div>
+  </header>
+  <section class="post-content" [innerHTML]="post().content"></section>
+  <footer>
+    <div class="post-actions">
+      <a mat-stroked-button routerLink="/post/{{ post().id }}">view</a>
+    </div>
+  </footer>
+</article>

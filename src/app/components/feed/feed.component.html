@@ -1,0 +1,15 @@
+<header class="page-header">
+  <h2>{{ feedName() }}</h2>
+</header>
+@if (loading) {
+  <app-loader> feed</app-loader>
+} @else {
+  <section class="page-content post-feed">
+    @for (post of postList(); track post.id) {
+      <app-post [post]="post" />
+    }
+  </section>
+  <footer class="feed-footer">
+    <p>no more posts...</p>
+  </footer>
+}

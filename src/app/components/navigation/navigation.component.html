@@ -1,0 +1,12 @@
+<mat-nav-list>
+  @for (link of pageLinks; track link.path) {
+    <a class="nav-link" [routerLink]="link.path" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <mat-list-item>
+        <div class="nav-link-inner">
+          <span class="link-icon"><fa-icon [icon]="link.icon" size="sm" /></span>
+          <span class="link-text">{{ link.label }}</span>
+        </div>
+      </mat-list-item>
+    </a>
+  }
+</mat-nav-list>

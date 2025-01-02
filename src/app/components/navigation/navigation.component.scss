@@ -1,0 +1,13 @@
+.nav-link-inner {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link-icon {
+  width: 1.25rem;
+
+  --fa-display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

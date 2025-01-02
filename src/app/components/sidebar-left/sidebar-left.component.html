@@ -1,0 +1,35 @@
+<div class="sidebar-sections sidebar-left">
+  <section class="sidebar-top">
+    <header>
+      <div class="logo">
+        <img src="https://placecats.com/millie/300/100" alt="A cat named Bella" width="300" height="100" />
+      </div>
+    </header>
+    <app-navigation />
+  </section>
+  <section class="sidebar-bottom">
+    <div class="account-card">
+      <img class="avatar" src="https://placecats.com/neo_2/40/40" alt="Profile picture" width="40" height="40" />
+      <span class="user-name">FireIsGood</span>
+      <span class="user-url">&commat;fireisgood</span>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="userMenu" class="theme-toggle" type="button" title="Toggle theme">
+      <fa-icon [icon]="dotsIcon" />
+    </button>
+  </section>
+</div>
+
+<mat-menu #userMenu="matMenu" yPosition="above" xPosition="before">
+  <a mat-menu-item routerLink="/blog/me">
+    <div class="menu-link-inner">
+      <span class="link-icon"><fa-icon [icon]="userIcon" size="sm" /></span>
+      <span class="link-text">My blog</span>
+    </div>
+  </a>
+  <a mat-menu-item routerLink="/settings">
+    <div class="menu-link-inner">
+      <span class="link-icon"><fa-icon [icon]="settingsIcon" size="sm" /></span>
+      <span class="link-text">Settings</span>
+    </div>
+  </a>
+</mat-menu>

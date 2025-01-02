@@ -1,13 +1,37 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>AngularTesting</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root></app-root>
-</body>
+<html lang="en" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Cool Site Wow</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="https://fav.farm/🍥" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet" />
+    <script>
+      // Theme switcher bootstrap
+      if (typeof localStorage !== "undefined") {
+        const localTheme = localStorage.getItem("theme");
+        if (localTheme === "light" || localTheme === "dark" || localTheme === "auto") {
+          document.documentElement.setAttribute("data-theme", localTheme);
+        }
+      } else {
+        document.documentElement.setAttribute("data-theme", "auto");
+      }
+    </script>
+  </head>
+  <body class="mat-typography">
+    <div id="splash">
+      <div id="splash-content">
+        <img src="https://placecats.com/bella/96/96" alt="A cat named Bella" width="96" height="96" />
+        <p>My cool website :3</p>
+      </div>
+    </div>
+    <noscript>
+      <p>This website needs scripts to run!</p>
+    </noscript>
+    <app-root></app-root>
+  </body>
 </html>

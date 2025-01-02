@@ -1,1 +1,119 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+@use "app/styles/theme-switcher.scss";
+@use "app/styles/layout.scss";
+@use "app/styles/element-styles.scss";
+@use "app/styles/posts.scss";
+@use "app/styles/material-overrides.scss";
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      density: 0,
+    )
+  );
+}
+
+// HACK: Have to make dummy theme to initialize typography
+$theme: mat.define-theme(
+  (
+    color: (
+      primary: mat.$violet-palette,
+    ),
+  )
+);
+
+@include mat.typography-hierarchy($theme);
+
+// Custom theme on top of it
+@import "./app/styles/default.css";
+
+/* Wafrn variables */
+:root {
+  --waf-page-width: 1200px;
+  --waf-content-width: 780px;
+  --waf-sidebar-width: 260px;
+  --waf-topbar-height: 80px;
+}
+
+// Splash and no-js styles
+#splash {
+  position: absolute;
+  inset: 0;
+  background-color: var(--mat-sys-background);
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  cursor: wait;
+  transition: display, opacity;
+  transition-duration: 120ms;
+  transition-behavior: allow-discrete;
+  transition-timing-function: ease-in;
+  opacity: 1;
+
+  &.loaded {
+    display: none;
+    opacity: 0;
+
+    & #splash-content {
+      translate: 0 -6px;
+    }
+  }
+}
+
+#splash-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  transition: translate 120ms ease-in;
+
+  & img {
+    margin-inline: auto;
+  }
+}
+
+// General styles
+.account-card {
+  display: grid;
+  grid-template:
+    "a b" auto
+    "a c" auto / auto 1fr;
+  gap: 0 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: var(--mat-sys-on-surface);
+
+  & .avatar {
+    grid-area: a;
+    border-radius: var(--mat-sys-corner-extra-small);
+  }
+  & .user-name {
+    grid-area: b;
+    font-weight: 500;
+  }
+  & .user-url {
+    grid-area: c;
+    color: var(--mat-sys-outline);
+    font-size: 0.8rem;
+  }
+}
+
+:root .loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.25rem;
+
+  & p {
+    margin: 0;
+  }
+}
