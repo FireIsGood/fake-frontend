@@ -10,7 +10,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   imports: [PostComponent, MatButtonModule, LoaderComponent, FontAwesomeModule],
   templateUrl: './single-post.component.html',
-  styleUrl: './single-post.component.scss',
 })
 export class SinglePostComponent {
   @Input()

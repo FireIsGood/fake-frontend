@@ -6,6 +6,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-feed-nav',
   imports: [RouterLink, RouterLinkActive, MatButtonModule],
   templateUrl: './feed-nav.component.html',
-  styleUrl: './feed-nav.component.scss',
 })
 export class FeedNavComponent {}

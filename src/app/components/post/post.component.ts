@@ -12,7 +12,6 @@ export type Post = {
   selector: 'app-post',
   imports: [RouterLink, MatButtonModule],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.scss',
 })
 export class PostComponent {
   readonly post = input.required<Post>();

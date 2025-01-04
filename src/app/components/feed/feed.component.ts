@@ -10,7 +10,6 @@ export type Feed = 'explore' | 'cats';
   selector: 'app-feed',
   imports: [PostComponent, LoaderComponent],
   templateUrl: './feed.component.html',
-  styleUrl: './feed.component.scss',
 })
 export class FeedComponent {
   readonly routeData = signal<Data>({});
