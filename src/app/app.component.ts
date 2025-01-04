@@ -2,7 +2,6 @@ import { afterRender, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarLeftComponent } from './components/sidebar-left/sidebar-left.component';
 import { SidebarRightComponent } from './components/sidebar-right/sidebar-right.component';
-import { FeedNavComponent } from './components/feed-nav/feed-nav.component';
 
 @Component({
   selector: 'app-root',
