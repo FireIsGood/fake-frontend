@@ -36,9 +36,9 @@ $theme: mat.define-theme(
 
 /* Wafrn variables */
 :root {
-  --waf-page-width: 1200px;
-  --waf-content-width: 780px;
-  --waf-sidebar-width: 260px;
+  --waf-page-width: 1400px;
+  --waf-content-ratio: 3fr;
+  --waf-sidebar-ratio: 1fr;
   --waf-topbar-height: 80px;
 }
 

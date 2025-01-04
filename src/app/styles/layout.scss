@@ -1,5 +1,7 @@
 main {
-  display: flex;
+  display: grid;
+  grid-template-columns: var(--waf-sidebar-ratio) var(--waf-content-ratio) var(--waf-sidebar-ratio);
+  max-width: var(--waf-page-width);
   min-height: 100%;
   justify-content: center;
   margin-inline: auto;
@@ -8,7 +10,6 @@ main {
 #main-content {
   background: var(--mat-sys-surface-container-low);
   color: var(--mat-sys-on-background);
-  width: var(--waf-content-width);
   border-style: solid;
   border-color: var(--mat-sys-outline-variant);
   border-width: 0 1px 0;
@@ -28,7 +29,6 @@ main {
   top: 0;
   height: 100vh;
   background: var(--mat-sys-surface-container);
-  width: var(--waf-sidebar-width);
 
   a {
     text-decoration: none;
