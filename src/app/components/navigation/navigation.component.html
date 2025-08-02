@@ -1,5 +1,5 @@
 <mat-nav-list>
-  @for (link of pageLinks; track link.path) {
+  @for (link of pageLinks; track $index) {
     <a class="nav-link" [routerLink]="link.path" routerLinkActive="active" ariaCurrentWhenActive="page">
       <mat-list-item>
         <div class="nav-link-inner">
