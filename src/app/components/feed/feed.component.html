@@ -6,7 +6,7 @@
 } @else {
   <section class="page-content post-feed">
     @for (post of postList(); track post.id) {
-      <app-post [post]="post" />
+      <app-post [post]="post" [id]="'post-' + $index" [class.selected]="$index === postIndex" tabindex="-1" />
     }
   </section>
   <footer class="feed-footer">
