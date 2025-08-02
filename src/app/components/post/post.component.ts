@@ -15,4 +15,14 @@ export type Post = {
 })
 export class PostComponent {
   readonly post = input.required<Post>();
+  test = '';
+
+  repostPost() {
+    console.log('REPOSTED POST', this.post().id);
+    this.test = 'REPOST';
+  }
+  likePost() {
+    console.log('LIKED POST', this.post().id);
+    this.test = 'LIKE';
+  }
 }

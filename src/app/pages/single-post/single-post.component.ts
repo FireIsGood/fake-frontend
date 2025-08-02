@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Post, PostComponent } from '../../components/post/post.component';
 import { getPost } from '../../scripts/post-store';
 import { MatButtonModule } from '@angular/material/button';

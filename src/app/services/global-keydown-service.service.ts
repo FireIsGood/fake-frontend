@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, filter, fromEvent, map } from 'rxjs';
+import { Observable, Subject, filter, fromEvent, map } from 'rxjs';
 
 export type CallbackDictionary = Record<string, Function>;
 

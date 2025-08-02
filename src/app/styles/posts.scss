@@ -23,7 +23,7 @@
   background: var(--mat-sys-surface-container);
   border-radius: var(--mat-sys-corner-small);
   box-shadow: var(--mat-sys-level1);
-  .selected:focus > & {
+  .selected > & {
     outline: unset;
     box-shadow: 0 0 1px 3px var(--mat-sys-primary);
   }
@@ -38,6 +38,8 @@
 }
 
 .post-title {
+  display: flex;
+  justify-content: space-between;
   padding-top: 1rem;
   padding-inline: 1rem;
   font-weight: 500;

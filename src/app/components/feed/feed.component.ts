@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, viewChildren } from '@angular/core';
 import { Post, PostComponent } from '../post/post.component';
 import { ActivatedRoute, Data } from '@angular/router';
 import { getFeed } from '../../scripts/post-store';
@@ -7,6 +7,11 @@ import { CallbackDictionary, GlobalKeydownService } from '../../services/global-
 import { Subject, takeUntil } from 'rxjs';
 
 export type Feed = 'explore' | 'cats';
+
+export enum PostAction {
+  Repost,
+  Like,
+}
 
 @Component({
   selector: 'app-feed',
@@ -21,13 +26,20 @@ export class FeedComponent {
   shortcutList: CallbackDictionary = {
     j: () => this.scrollToPost(1),
     k: () => this.scrollToPost(-1),
+    '.': () => this.scrollToPost(0, true),
+    l: () => this.postAction(PostAction.Like),
+    r: () => this.postAction(PostAction.Repost),
   };
 
   readonly routeData = signal<Data>({});
   readonly postList = signal<Post[]>([]);
   readonly feedName = computed<string>(() => this.routeData()['feed'] ?? 'Unknown');
-  postIndex: number = 0;
+  activePostIndex = signal<number>(0);
+  activePostId = computed<number>(() => this.postList()[this.activePostIndex()].id);
+
   loading = true;
+
+  postListElements = viewChildren(PostComponent);
 
   constructor(route: ActivatedRoute) {
     route.data.subscribe((data) => this.routeData.set(data));
@@ -49,11 +61,28 @@ export class FeedComponent {
     this.loading = false;
   }
 
-  scrollToPost(index: number) {
-    console.log(index);
-    this.postIndex = Math.max(Math.min(this.postIndex + index, this.postList().length - 1), 0);
-    const post = document.querySelector(`#post-${this.postIndex}`) as HTMLElement;
-    window.scrollTo(0, post.offsetTop - this.navOffset);
+  scrollToPost(index: number, absolute: boolean = false) {
+    if (absolute) {
+      this.activePostIndex.set(index);
+    } else {
+      this.activePostIndex.set(Math.max(Math.min(this.activePostIndex() + index, this.postList().length - 1), 0));
+    }
+    const post = document.querySelector(`#post-${this.activePostId()}`) as HTMLElement | null;
+    if (post === null) return;
     post.focus();
+    window.scrollTo(0, post.offsetTop - this.navOffset);
+  }
+
+  postAction(action: PostAction) {
+    const activePost = this.postListElements().find((e) => e.post().id === this.activePostId());
+    if (activePost === undefined) return;
+    switch (action) {
+      case PostAction.Repost:
+        activePost.repostPost();
+        break;
+      case PostAction.Like:
+        activePost.likePost();
+        break;
+    }
   }
 }
